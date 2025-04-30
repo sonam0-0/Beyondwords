@@ -50,7 +50,8 @@ markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 matplotlib==3.10.1
 mdurl==0.1.2
-mediapipe==0.10.0
+--extra-index-url https://snapshots.mediapipe.dev/pypi/
+mediapipe==0.10.21
 gunicorn==21.2.0
 ml_dtypes==0.5.1
 msgpack==1.1.0
