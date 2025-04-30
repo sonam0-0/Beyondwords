@@ -1,0 +1,723 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyInn Features</title>
+  <link rel="stylesheet" href="getstarted.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to StudyInn</h1>
+    <p class="welcome-message">Your current login streak is: <span id="streakCount">Loading...</span> 🔥</p>
+  
+    <div class="feature-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3059/3059518.png" alt="Join Room">
+      <h3>Join Room</h3>
+      <p>Join study rooms with ease and collaborate with peers.</p>
+    </div>
+
+    <div class="feature-card">
+      <img src="https://img.icons8.com/?size=100&id=7859&format=png" alt="Chat">
+      <h3>Chat</h3>
+      <p>Communicate seamlessly with your peers in real-time.</p>
+    </div>
+
+    <div class="feature-card notes">
+      <img src="https://img.icons8.com/?size=96&id=4TitHka0gqrV&format=png" alt="Notes">
+      <h3>Notes</h3>
+      <p>Take and share notes effortlessly during your sessions.</p>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // Display streak from localStorage
+    window.onload = function () {
+      const streak = localStorage.getItem("streak");
+      const streakDisplay = document.getElementById("streakCount");
+
+      if (streak) {
+        streakDisplay.textContent = streak;
+      } else {
+        streakDisplay.textContent = "0";
+      }
+    };
+
+    // Logout
+    function logout() {
+      localStorage.removeItem("streak");
+      localStorage.removeItem("loggedInUserId");
+      window.location.href = "./home.html"; // Redirect to login page
+    }
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeyondWords - Inclusive Communication</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #0a192f; /* Dark blue background from image */
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #0a192f; /* Dark blue from image */
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b35; /* Orange/red accent color */
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .btn-outline {
+            border: 1px solid white;
+            color: white;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0a192f;
+        }
+        
+        .btn-primary {
+            background: #ff6b35; /* Orange/red button color from image */
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: #e05a2b; /* Slightly darker shade for hover */
+        }
+        
+        /* Hero Section - Front Page */
+        .hero {
+            background-color: #0a192f; /* Dark blue from image */
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80') no-repeat center center/cover;
+            opacity: 0.2; /* Subtle texture overlay */
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: #0a192f;
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            border-top: 4px solid #ff6b35; /* Orange/red accent */
+            backdrop-filter: blur(5px);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .category-card h3 {
+            margin: 1rem 0;
+            color: white;
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 4rem 0;
+            background-color: #0a192f;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .mission-values {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .value-card h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: #0a192f;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 4px solid #ff6b35;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Us Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: #0a192f;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 1rem;
+            color: #ff6b35;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b35;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #07152a;
+            padding: 3rem 0 1rem;
+            color: white;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #ff6b35;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+     <!-- Header with Navigation -->
+     <header>
+        <div class="container">
+            <nav>
+                <div class="logo">BeyondWords</div>
+                <ul class="nav-links">
+                    
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/sign-recognition">Sign Recognition</a></li>
+                        <li><a href="/auth" class="btn-signin">Sign In</a></li>
+                    
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="btn btn-outline">Sign In</a>
+                    <a href="auth.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header> 
+    <!-- In your base template or header partial -->
+
+
+    <!-- Home Page -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Inclusive Communication for Everyone</h1>
+                <p>Learn sign language, gesture recognition, and immersive communication techniques with our expert trainers.</p>
+                <a href="#classes" class="btn btn-primary">TRY NOW!!</a>
+                <a href="/auth" class="cta-btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Categories -->
+    <section id="classes" class="categories">
+        <div class="container">
+            <h2 class="section-title">CLASS CATEGORIES</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3>SIGN LANGUAGE</h3>
+                    <a href="/sign-recognition" class="btn btn-primary">Start Sign Recognition</a>
+                    <p>Master the art of sign language communication with our comprehensive courses.</p>
+                </div>
+                <div class="category-card">
+                    <h3>GAME</h3>
+                    <p>Interactive games designed to make learning communication skills fun and engaging.</p>
+                </div>
+                <div class="category-card">
+                    <h3>AR/VR</h3>
+                    <p>Immersive augmented and virtual reality experiences for practical learning.</p>
+                </div>
+                <div class="category-card">
+                    <h3>HAND GESTURE</h3>
+                    <p>Learn to recognize and use hand gestures for effective non-verbal communication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About BeyondWords</h2>
+                    <p>BeyondWords is a revolutionary platform dedicated to breaking down communication barriers through innovative technology and education. Our mission is to make communication accessible to everyone, regardless of their abilities or background.</p>
+                    <p>Founded in 2020 by a team of educators and technologists, we combine cutting-edge technology with proven teaching methods to create transformative learning experiences.</p>
+                    
+                    <div class="mission-values">
+                        <div class="value-card">
+                            <h3>Our Mission</h3>
+                            <p>To empower individuals through inclusive communication technologies that bridge gaps and build connections.</p>
+                        </div>
+                        <div class="value-card">
+                            <h3>Our Vision</h3>
+                            <p>A world where everyone can communicate freely, without barriers or limitations.</p>
+                        </div>
+                        <div class="value-card">
+                            <h3>Our Approach</h3>
+                            <p>Combining technology with human-centered design to create effective learning solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BeyondWords team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Our Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Interactive Learning</h3>
+                    <p>Engaging, hands-on activities that make learning sign language and gestures intuitive and fun.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>AR/VR Integration</h3>
+                    <p>Immersive experiences that simulate real-world communication scenarios for practical learning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gamified Education</h3>
+                    <p>Learning through play with our specially designed communication games and challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Comprehensive analytics to track your learning journey and celebrate milestones.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Connect with other learners and experts in our supportive community forums.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Accessibility</h3>
+                    <p>Learn anytime, anywhere with our mobile-friendly platform and apps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Communication Lane, Tech City, TC 12345</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@beyondwords.com</p>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BeyondWords</h3>
+                    <p>Making communication accessible to everyone through innovative technology and education.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#classes">Classes</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Classes</h3>
+                    <ul>
+                        <li><a href="#">Sign Language</a></li>
+                        <li><a href="#">Gesture Recognition</a></li>
+                        <li><a href="#">AR/VR Communication</a></li>
+                        <li><a href="#">Interactive Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BeyondWords. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to toggle between sign in and sign up forms
+        document.querySelectorAll('a[href="#signin"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('signup').style.display = 'none';
+                document.getElementById('signin').style.display = 'block';
+                window.scrollTo(0, document.getElementById('signin').offsetTop);
+            });
+        });
+        
+        document.querySelectorAll('a[href="#signup"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('signin').style.display = 'none';
+                document.getElementById('signup').style.display = 'block';
+                window.scrollTo(0, document.getElementById('signup').offsetTop);
+            });
+        });
+    </script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
