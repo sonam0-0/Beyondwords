@@ -7,7 +7,7 @@ cvzone
 pyttsx3
 spellchecker
 firebase-admin
-tensorflow-cpu==2.11.0
+tensorflow-cpu==2.19.0
 firebase-admin==6.0.1
 Flask==2.3.2
 gunicorn==20.1.0
